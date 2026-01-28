@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview URL Parameter Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2563eb;
+            margin-top: 0;
+        }
+        .param {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .param:last-child {
+            border-bottom: none;
+        }
+        .label {
+            font-weight: 600;
+            color: #666;
+        }
+        .value {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            max-width: 300px;
+            word-break: break-all;
+        }
+        .missing {
+            color: #dc2626;
+            font-style: italic;
+        }
+        .success {
+            color: #16a34a;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .status.all-good {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        .status.missing-params {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+        .raw-url {
+            margin-top: 20px;
+            padding: 12px;
+            background: #f8f8f8;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🔗 URL Parameter Test</h1>
+        <p>This page displays the parameters received from the interview invite link.</p>
+        
+        <div id="params"></div>
+        <div id="status"></div>
+        <div class="raw-url">
+            <strong>Full URL:</strong><br>
+            <span id="full-url"></span>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const expected = ['interviewId', 'firstName', 'lastName', 'email'];
+        
+        const paramsDiv = document.getElementById('params');
+        const statusDiv = document.getElementById('status');
+        const fullUrlSpan = document.getElementById('full-url');
+        
+        let allPresent = true;
+        
+        expected.forEach(key => {
+            const value = params.get(key);
+            const div = document.createElement('div');
+            div.className = 'param';
+            
+            if (value) {
+                div.innerHTML = `
+                    <span class="label">${key}</span>
+                    <span class="value success">${value}</span>
+                `;
+            } else {
+                allPresent = false;
+                div.innerHTML = `
+                    <span class="label">${key}</span>
+                    <span class="value missing">Not provided</span>
+                `;
+            }
+            paramsDiv.appendChild(div);
+        });
+        
+        if (allPresent) {
+            statusDiv.className = 'status all-good';
+            statusDiv.textContent = '✓ All parameters received successfully!';
+        } else {
+            statusDiv.className = 'status missing-params';
+            statusDiv.textContent = '✗ Some parameters are missing';
+        }
+        
+        fullUrlSpan.textContent = window.location.href;
+    </script>
+</body>
+</html>
