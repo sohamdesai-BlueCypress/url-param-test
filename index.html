@@ -1,131 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Interview URL Parameter Test</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="AI Technical Interview" />
+    <title>Technology Fellow - AI Technical Screen</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2563eb;
-            margin-top: 0;
-        }
-        .param {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .param:last-child {
-            border-bottom: none;
-        }
-        .label {
-            font-weight: 600;
-            color: #666;
-        }
-        .value {
-            font-family: monospace;
-            background: #f0f0f0;
-            padding: 4px 8px;
-            border-radius: 4px;
-            max-width: 300px;
-            word-break: break-all;
-        }
-        .missing {
-            color: #dc2626;
-            font-style: italic;
-        }
-        .success {
-            color: #16a34a;
-        }
-        .status {
-            margin-top: 20px;
-            padding: 16px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-        }
-        .status.all-good {
-            background: #dcfce7;
-            color: #16a34a;
-        }
-        .status.missing-params {
-            background: #fef2f2;
-            color: #dc2626;
-        }
-        .raw-url {
-            margin-top: 20px;
-            padding: 12px;
-            background: #f8f8f8;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 12px;
-            word-break: break-all;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>🔗 URL Parameter Test</h1>
-        <p>This page displays the parameters received from the interview invite link.</p>
-        
-        <div id="params"></div>
-        <div id="status"></div>
-        <div class="raw-url">
-            <strong>Full URL:</strong><br>
-            <span id="full-url"></span>
+    <div style="max-width: 1100px; margin: 0 auto; padding: 80px 32px;">
+        <h1 style="font-size: 48px; margin-bottom: 24px;">Technology Fellow - AI Technical Screen</h1>
+        <p style="font-size: 22px; max-width: 800px;">You are about to complete a brief technical screening using our AI voice agent. This conversation helps us understand your technical background and experience.</p>
+        <div style="margin-top: 48px; padding: 32px; border: 3px solid #000;">
+            <p style="font-size: 26px;">Click the <span style="font-weight: bold;">call </span><strong>icon in the bottom-right corner</strong> of this page to begin your AI technical interview.</p>
         </div>
     </div>
-
+    <div id="elevenlabs-agent"></div>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const expected = ['interviewId', 'firstName', 'lastName', 'email'];
-        
-        const paramsDiv = document.getElementById('params');
-        const statusDiv = document.getElementById('status');
-        const fullUrlSpan = document.getElementById('full-url');
-        
-        let allPresent = true;
-        
-        expected.forEach(key => {
-            const value = params.get(key);
-            const div = document.createElement('div');
-            div.className = 'param';
-            
-            if (value) {
-                div.innerHTML = `
-                    <span class="label">${key}</span>
-                    <span class="value success">${value}</span>
-                `;
-            } else {
-                allPresent = false;
-                div.innerHTML = `
-                    <span class="label">${key}</span>
-                    <span class="value missing">Not provided</span>
-                `;
-            }
-            paramsDiv.appendChild(div);
+        window.addEventListener("load", function () {
+            var host = document.getElementById("elevenlabs-agent");
+            if (!host) return;
+
+            // Read URL parameters
+            var urlParams = new URLSearchParams(window.location.search);
+            var interviewId = urlParams.get('interviewId') || '';
+            var firstName = urlParams.get('firstName') || '';
+            var lastName = urlParams.get('lastName') || '';
+            var email = urlParams.get('email') || '';
+
+            // Create the ElevenLabs widget
+            var el = document.createElement("elevenlabs-convai");
+            el.setAttribute("agent-id", "agent_1301kftpv354etr83gaw6drfecw9");
+
+            // Pass parameters as dynamic variables
+            var dynamicVariables = {
+                interview_id: interviewId,
+                first_name: firstName,
+                last_name: lastName,
+                email: email
+            };
+            el.setAttribute("dynamic-variables", JSON.stringify(dynamicVariables));
+
+            host.appendChild(el);
         });
-        
-        if (allPresent) {
-            statusDiv.className = 'status all-good';
-            statusDiv.textContent = '✓ All parameters received successfully!';
-        } else {
-            statusDiv.className = 'status missing-params';
-            statusDiv.textContent = '✗ Some parameters are missing';
-        }
-        
-        fullUrlSpan.textContent = window.location.href;
     </script>
 </body>
 </html>
