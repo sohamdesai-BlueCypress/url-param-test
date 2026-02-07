@@ -1,5 +1,5 @@
-<!DOCTYPE html>                                                                        
-  <html lang="en">
+<!DOCTYPE html>                                                                                                                                 
+  <html lang="en">                                                                                                                                
   <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,25 +36,18 @@
       <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
       <script>
-          // Wait for the widget to be defined
           window.addEventListener("load", function () {
-              // Read URL parameters - use snake_case to match what the ATS passes
+              // URL params are snake_case (from ATS backend)
+              // ElevenLabs dynamic variables are camelCase (matching agent config)
               var urlParams = new URLSearchParams(window.location.search);
-              var interviewId = urlParams.get('interview_id') || '';
-              var firstName = urlParams.get('first_name') || '';
-              var lastName = urlParams.get('last_name') || '';
-              var email = urlParams.get('email') || '';
-
-              // Get the widget element
               var widget = document.querySelector('elevenlabs-convai');
 
               if (widget) {
-                  // Pass parameters as dynamic variables
                   var dynamicVariables = {
-                      interview_id: interviewId,
-                      first_name: firstName,
-                      last_name: lastName,
-                      email: email
+                      interviewId: urlParams.get('interview_id') || '',
+                      firstName: urlParams.get('first_name') || '',
+                      lastName: urlParams.get('last_name') || '',
+                      email: urlParams.get('email') || ''
                   };
                   widget.setAttribute("dynamic-variables", JSON.stringify(dynamicVariables));
               }
