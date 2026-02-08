@@ -243,6 +243,12 @@
             max-width: 440px;
             margin: 0 auto 24px;
         }
+        .widget-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60px;
+        }
         .cta-btn {
             display: inline-flex;
             align-items: center;
@@ -368,7 +374,10 @@
         <div class="cta-card">
             <span class="cta-emoji">🎙️</span>
             <div class="cta-heading">Ready to begin?</div>
-            <p class="cta-sub">Tap the call button in the bottom-right corner to start your AI-powered technical screen.</p>
+            <p class="cta-sub">Click the call button below to start your AI-powered technical screen.</p>
+            <div class="widget-container">
+                <elevenlabs-convai agent-id="agent_0901kgqxky2wejqt17328p2hj96c"></elevenlabs-convai>
+            </div>
         </div>
 
         <!-- Tips Card -->
@@ -385,8 +394,7 @@
 
     <footer class="footer">Powered by AI · Your responses are recorded for review</footer>
 
-    <!-- ElevenLabs Widget with Dynamic Variables -->
-    <elevenlabs-convai agent-id="agent_0901kgqxky2wejqt17328p2hj96c"></elevenlabs-convai>
+    <!-- ElevenLabs Script -->
     <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
     <script>
