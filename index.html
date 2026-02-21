@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#58cc02" />
     <meta name="description" content="AI Technical Interview" />
-    <title>Technology Fellow - AI Technical Screen</title>
+    <title>Agent Orchestrator - AI Technical Screen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -19,8 +19,6 @@
             --duo-red: #ff4b4b;
             --duo-purple: #ce82ff;
             --duo-yellow: #ffc800;
-
-            /* Light mode */
             --bg-primary: #f7f7f7;
             --bg-card: #ffffff;
             --bg-hero: #1cb0f6;
@@ -42,7 +40,6 @@
             --divider: #e5e5e5;
             --icon-bg: rgba(88, 204, 2, 0.12);
         }
-
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-primary: #131f24;
@@ -67,13 +64,7 @@
                 --icon-bg: rgba(88, 204, 2, 0.1);
             }
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
@@ -82,8 +73,6 @@
             -webkit-font-smoothing: antialiased;
             min-height: 100vh;
         }
-
-        /* ── Hero Section ── */
         .hero {
             background: #1cb0f6;
             padding: 56px 24px 64px;
@@ -95,8 +84,7 @@
             content: '';
             position: absolute;
             bottom: -2px;
-            left: 0;
-            right: 0;
+            left: 0; right: 0;
             height: 32px;
             background: var(--bg-primary);
             border-radius: 32px 32px 0 0;
@@ -130,11 +118,6 @@
             margin: 0 auto;
             font-weight: 600;
         }
-
-        /* ── Mascot Icon ── */
-        
-
-        /* ── Main Content ── */
         .content {
             max-width: 680px;
             margin: -8px auto 0;
@@ -142,8 +125,6 @@
             position: relative;
             z-index: 1;
         }
-
-        /* ── Card ── */
         .card {
             background: var(--bg-card);
             border: 2px solid var(--border-color);
@@ -167,8 +148,7 @@
             gap: 10px;
         }
         .card-title .icon-circle {
-            width: 36px;
-            height: 36px;
+            width: 36px; height: 36px;
             border-radius: 50%;
             background: var(--icon-bg);
             display: flex;
@@ -176,13 +156,7 @@
             justify-content: center;
             flex-shrink: 0;
         }
-
-        /* ── Steps ── */
-        .steps {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
+        .steps { display: flex; flex-direction: column; gap: 14px; }
         .step {
             display: flex;
             align-items: flex-start;
@@ -193,8 +167,7 @@
             border-radius: 14px;
         }
         .step-num {
-            width: 32px;
-            height: 32px;
+            width: 32px; height: 32px;
             border-radius: 50%;
             background: var(--step-num-bg);
             color: var(--step-num-color);
@@ -206,16 +179,8 @@
             flex-shrink: 0;
             margin-top: 2px;
         }
-        .step-text {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-        .step-text strong {
-            font-weight: 800;
-        }
-
-        /* ── CTA Card ── */
+        .step-text { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+        .step-text strong { font-weight: 800; }
         .cta-card {
             background: var(--bg-card);
             border: 2px solid var(--border-color);
@@ -225,17 +190,8 @@
             box-shadow: var(--card-shadow);
             text-align: center;
         }
-        .cta-emoji {
-            font-size: 48px;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .cta-heading {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
+        .cta-emoji { font-size: 48px; margin-bottom: 12px; display: block; }
+        .cta-heading { font-size: 22px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
         .cta-sub {
             font-size: 16px;
             font-weight: 600;
@@ -268,20 +224,9 @@
             transition: transform 0.1s, box-shadow 0.1s;
             user-select: none;
         }
-        .cta-btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #358a00;
-        }
-        .cta-btn:hover {
-            transform: translateY(2px);
-            box-shadow: var(--cta-shadow-hover);
-        }
-        .cta-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* ── Tips Badge ── */
+        .cta-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #358a00; }
+        .cta-btn:hover { transform: translateY(2px); box-shadow: var(--cta-shadow-hover); }
+        .cta-btn svg { width: 20px; height: 20px; }
         .tips-badge {
             display: inline-block;
             background: var(--badge-bg);
@@ -294,12 +239,7 @@
             border-radius: 8px;
             margin-bottom: 14px;
         }
-        .tips-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+        .tips-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
         .tips-list li {
             display: flex;
             align-items: flex-start;
@@ -308,14 +248,7 @@
             font-weight: 600;
             color: var(--text-secondary);
         }
-        .tips-list li .check {
-            color: var(--duo-green);
-            font-size: 18px;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        /* ── Footer ── */
+        .tips-list li .check { color: var(--duo-green); font-size: 18px; flex-shrink: 0; margin-top: 1px; }
         .footer {
             text-align: center;
             padding: 20px;
@@ -325,8 +258,6 @@
             border-top: 2px solid var(--divider);
             background: var(--footer-bg);
         }
-
-        /* ── Responsive ── */
         @media (max-width: 540px) {
             .hero { padding: 40px 16px 52px; }
             .content { padding: 0 14px 80px; }
@@ -336,17 +267,12 @@
     </style>
 </head>
 <body>
-
-    <!-- Hero -->
     <section class="hero">
-        <h1>Technology Fellow Interview</h1>
+        <div class="hero-badge">Sidecar</div>
+        <h1>Agent Orchestrator Interview</h1>
         <p>A quick, friendly AI-powered conversation to learn about your technical skills and experience.</p>
     </section>
-
-    <!-- Main Content -->
     <main class="content">
-
-        <!-- How It Works Card -->
         <div class="card">
             <div class="card-title">
                 <span class="icon-circle">
@@ -369,8 +295,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- CTA Card -->
         <div class="cta-card">
             <span class="cta-emoji">🎙️</span>
             <div class="cta-heading">Ready to begin?</div>
@@ -379,8 +303,6 @@
                 <elevenlabs-convai agent-id="agent_2701kgtjpp15ejttfp5jttaqhpbh"></elevenlabs-convai>
             </div>
         </div>
-
-        <!-- Tips Card -->
         <div class="card">
             <div class="tips-badge">💡 Tips</div>
             <ul class="tips-list">
@@ -391,19 +313,12 @@
             </ul>
         </div>
     </main>
-
-    <footer class="footer">Powered by AI · Your responses are recorded for review</footer>
-
-    <!-- ElevenLabs Script -->
+    <footer class="footer">Powered by Sidecar AI · Your responses are recorded for review</footer>
     <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-
     <script>
         window.addEventListener("load", function () {
-            // URL params are snake_case (from ATS backend)
-            // ElevenLabs dynamic variables are camelCase (matching agent config)
             var urlParams = new URLSearchParams(window.location.search);
             var widget = document.querySelector('elevenlabs-convai');
-
             if (widget) {
                 var dynamicVariables = {
                     interviewId: urlParams.get('interview_id') || '',
